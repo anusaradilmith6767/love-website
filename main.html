@@ -1,0 +1,1308 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#0b0508">
+<title>Mwah, My Love &amp; My Whole Damn World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Pinyon+Script&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1!important;translate:none!important}.stamp-in{opacity:.9!important}@keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style></noscript>
+<style>
+/* Layout concept: a gothic love letter & scrapbook. Black-wine pages, blackletter headlines, silver hairline
+   frames, lipstick kisses stamped in every corner, photos taped in like a scrapbook.
+   Extras: sealed-letter intro, scroll reveals, photo lightbox, progress line, kiss pad with trail. */
+:root {
+  --bg: #0b0508;
+  --bg-2: #14070d;
+  --wine: #3d0a18;
+  --fg: #f3e6ea;
+  --muted: #bd9ca8;
+  --lip: #d4264b;
+  --silver: #cfc2ca;
+  --paper: #efe6e1;
+  --ink: #22090f;
+  --tape: rgba(212, 38, 75, 0.5);
+  --kiss-filter: drop-shadow(0 0 10px rgba(212, 38, 75, 0.55));
+  --font-goth: "UnifrakturCook", "Old English Text MT", "Georgia", serif;
+  --font-body: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  --font-script: "Pinyon Script", "Snell Roundhand", cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+
+
+
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; font-family: var(--font-goth); font-weight: 700; }
+.wrap { max-width: 1100px; margin-inline: auto; }
+section { position: relative; overflow: hidden; padding-block: clamp(60px, 9vw, 110px); }
+section > .wrap { position: relative; z-index: 1; }
+::selection { background: var(--lip); color: #fff; }
+
+/* BASE LAYOUT */
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  animation: pageFadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  line-height: 1.55;
+  padding-inline: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+/* GLOWING LILY FLOWER DECORATIONS - BIG, RADIANT & EYE-CATCHING */
+.flw {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  left: var(--fx, auto);
+  right: var(--fr, auto);
+  top: var(--fy, auto);
+  bottom: var(--fb, auto);
+  width: clamp(230px, var(--fs, 32vw), 580px);
+  transform: rotate(var(--frt, 0deg));
+  opacity: var(--fo, 0.95);
+  animation: flwFloat 7s ease-in-out infinite alternate, flwPulse 4.5s ease-in-out infinite alternate;
+  animation-delay: var(--fd, 0s);
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.75))
+          drop-shadow(0 0 45px rgba(212, 38, 75, 0.85))
+          drop-shadow(0 0 85px rgba(212, 38, 75, 0.5));
+}
+.flw.hero-big {
+  width: clamp(280px, var(--fs, 40vw), 680px);
+}
+.flw.glow-gold {
+  filter: drop-shadow(0 0 22px rgba(255, 220, 170, 0.95))
+          drop-shadow(0 0 52px rgba(255, 160, 100, 0.88))
+          drop-shadow(0 0 95px rgba(212, 38, 75, 0.65));
+}
+.flw.glow-white {
+  filter: drop-shadow(0 0 24px rgba(255, 255, 255, 0.95))
+          drop-shadow(0 0 52px rgba(207, 194, 202, 0.82))
+          drop-shadow(0 0 90px rgba(212, 38, 75, 0.55));
+}
+.flw.glow-halo {
+  filter: drop-shadow(0 0 26px rgba(255, 240, 230, 0.98))
+          drop-shadow(0 0 58px rgba(255, 180, 205, 0.88))
+          drop-shadow(0 0 105px rgba(212, 38, 75, 0.7));
+}
+.flw.glow-wine {
+  filter: drop-shadow(0 0 18px rgba(255, 90, 130, 0.8))
+          drop-shadow(0 0 45px rgba(180, 20, 50, 0.92))
+          drop-shadow(0 0 85px rgba(90, 10, 30, 0.85));
+}
+
+@keyframes flwFloat {
+  0% { transform: rotate(var(--frt, 0deg)) translate(0, 0); }
+  50% { transform: rotate(calc(var(--frt, 0deg) + 3.5deg)) translate(8px, -12px); }
+  100% { transform: rotate(calc(var(--frt, 0deg) - 2.5deg)) translate(-6px, 10px); }
+}
+@keyframes flwPulse {
+  0% { scale: 1; }
+  50% { scale: 1.05; }
+  100% { scale: 0.97; }
+}
+
+/* HERO */
+.hero { padding-block: clamp(40px, 7vw, 90px); background: radial-gradient(ellipse at 75% 30%, var(--wine) 0%, var(--bg) 62%); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hero h1 { font-size: clamp(3.2rem, 8.4vw, 6.8rem); line-height: 0.95; }
+.hero h1 span { color: var(--lip); display: block; text-shadow: 0 0 40px rgba(212, 38, 75, .35); }
+.hero .lede { margin-top: 24px; max-width: 34ch; font-size: 1.5rem; color: var(--silver); font-style: italic; }
+.hero .mwah { margin-top: 14px; font-family: var(--font-script); font-size: 3rem; color: var(--lip); transform: rotate(-3deg); display: inline-block; }
+.arch { position: relative; margin: 0; justify-self: center; width: min(100%, 380px); animation: bob 7s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.arch img {
+  transition: transform .2s ease-out;
+  display: block; width: 100%; aspect-ratio: 3 / 4.2; object-fit: cover; object-position: center;
+  border-radius: 999px 999px 8px 8px; border: 1px solid var(--silver); outline: 1px solid var(--silver); outline-offset: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
+}
+.scrollcue { display: block; margin-top: 28px; font-size: 1rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.scrollcue::after { content: "↓"; display: block; font-size: 1.4rem; letter-spacing: 0; margin-top: 4px; animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 50% { translate: 0 6px; } }
+
+/* WORDS */
+.words { background: var(--bg-2); }
+.words h2 { font-family: var(--font-script); font-weight: 400; font-size: 2.8rem; color: var(--silver); }
+.words ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.words li { font-family: var(--font-goth); font-size: clamp(3rem, 11vw, 8rem); line-height: 1.02; display: flex; align-items: baseline; gap: .3em; flex-wrap: wrap; }
+.words li { transition: opacity .9s ease, translate .9s cubic-bezier(.2, .8, .2, 1), color .3s, text-shadow .3s; }
+.words li:hover { color: var(--lip); text-shadow: 0 0 36px rgba(212, 38, 75, .55); }
+.words li:nth-child(3) { color: var(--lip); }
+.words li small { font-family: var(--font-script); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--muted); }
+
+/* shared headings */
+.sect-h { font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.02; }
+
+/* GALLERY + POLAROIDS */
+.polas { margin-top: 44px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 28px; align-items: stretch; }
+.pola { position: relative; left: 0; top: 0; display: flex; flex-direction: column; margin: 0; background: var(--paper); padding: 10px 10px 8px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6); transform: rotate(var(--rot, 0deg)); transition: transform .25s ease, box-shadow .25s ease; }
+.pola:hover { transform: rotate(0deg) scale(1.03); z-index: 3; box-shadow: 0 22px 54px rgba(0, 0, 0, .75); }
+.pola::before { content: ""; position: absolute; top: -12px; left: 50%; width: 78px; height: 24px; margin-left: -39px; background: var(--tape); transform: rotate(-4deg); }
+.pola img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center; background: #d9cfca; }
+.pola figcaption { flex: 1; display: grid; place-items: center; min-height: 4.4rem; padding: 8px 6px 4px; text-align: center; font-family: var(--font-script); font-size: 1.75rem; line-height: 1.1; color: var(--ink); text-wrap: balance; }
+.pola:nth-child(6n+1) { --rot: -1.6deg; }
+.pola:nth-child(6n+2) { --rot: 1.2deg; }
+.pola:nth-child(6n+3) { --rot: -0.8deg; }
+.pola:nth-child(6n+4) { --rot: 1.6deg; }
+.pola:nth-child(6n+5) { --rot: -1.2deg; }
+.pola:nth-child(6n)   { --rot: 0.9deg; }
+[data-zoom] { cursor: zoom-in; }
+[data-zoom]:focus-visible { outline: 3px solid var(--lip); outline-offset: 4px; }
+
+/* ADORE */
+.adore { background: var(--bg-2); }
+.adore .intro { margin-top: 12px; color: var(--muted); font-style: italic; font-size: 1.45rem; max-width: 40ch; }
+.cards { margin-top: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.card { position: relative; padding: 34px 30px 32px; border: 1px solid var(--silver); outline: 1px solid rgba(207, 194, 202, .35); outline-offset: 6px; background: rgba(11, 5, 8, .72); min-width: 0; transition: border-color .3s, background .3s; }
+.card:hover { border-color: var(--lip); background: rgba(61, 10, 24, .55); }
+.card h3 { font-size: 2.2rem; line-height: 1.05; color: var(--lip); }
+.card p { margin-top: 12px; font-size: 1.3rem; color: var(--fg); }
+.card.wide { grid-column: span 2; background: linear-gradient(135deg, var(--wine), rgba(11, 5, 8, .85)); }
+.card.wide p { font-size: 1.45rem; max-width: 62ch; }
+.card .cross { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--bg-2); padding-inline: 10px; color: var(--silver); font-size: 1.1rem; }
+
+/* SCRAPBOOK SECTION */
+.scrapbook { background: radial-gradient(ellipse at 50% 50%, var(--wine) 0%, var(--bg) 70%); }
+.grid-4 { margin-top: 44px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px 24px; }
+@media (max-width: 900px) { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 500px) { .grid-4 { grid-template-columns: 1fr; } }
+
+/* FOG banner */
+.fog { padding: 0; min-height: min(78vh, 640px); display: grid; align-items: end; margin-inline: -16px; }
+.fog .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; filter: grayscale(.35) contrast(1.05) brightness(.78); }
+.fog::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 4%, rgba(11, 5, 8, .15) 55%, rgba(11, 5, 8, .5)); }
+.fog .wrap { position: relative; z-index: 2; padding: 0 16px clamp(34px, 6vw, 70px); width: 100%; }
+.fog h2 { font-size: clamp(2.2rem, 6vw, 4.2rem); line-height: 1.05; max-width: 22ch; }
+.fog p { margin-top: 10px; font-size: 1.45rem; font-style: italic; color: var(--silver); max-width: 42ch; }
+
+
+.reels-duo { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; }
+.reels-duo .reel { flex: 1 1 240px; max-width: 320px; }
+.mini-star { border: 1px solid var(--silver); background: var(--paper); padding: 8px 8px 6px; box-shadow: 0 16px 40px rgba(0,0,0,.6); }
+.kid-section { background: radial-gradient(ellipse at 50% 50%, var(--wine) 0%, var(--bg) 70%); }
+.me-section { background: var(--bg-2); }
+
+/* EYES */
+.eyes { background: radial-gradient(ellipse at 20% 40%, var(--wine) 0%, var(--bg) 65%); }
+.eyes .wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+.reel { margin: 0; justify-self: center; width: min(100%, 360px); background: #000; padding: 14px 14px 18px; border: 1px solid var(--silver); outline: 1px solid rgba(207, 194, 202, .35); outline-offset: 7px; transform: rotate(-1.5deg); box-shadow: 0 20px 60px rgba(0, 0, 0, .7); }
+.reel img { display: block; width: 100%; height: auto; }
+.reel figcaption { margin-top: 8px; text-align: center; font-family: var(--font-script); font-size: 1.8rem; color: var(--silver); }
+.eyes .txt { display: grid; gap: 16px; min-width: 0; }
+.eyes p.t { font-size: 1.45rem; max-width: 36ch; color: var(--silver); }
+
+/* LETTER */
+.letter .wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(28px, 5vw, 70px); align-items: center; }
+.letter .pola { --rot: -2deg; }
+.letter .
+.letter p { font-size: 1.4rem; max-width: 50ch; }
+.letter p strong { font-weight: 600; color: var(--lip); }
+.letter .big { font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.08; max-width: 18ch; }
+.letter .big em { color: var(--lip); font-style: normal; }
+.sign { font-family: var(--font-script); font-size: 3rem; color: var(--lip); transform: rotate(-2deg); display: inline-block; }
+
+/* HOLD */
+.hold { background: var(--bg-2); }
+.hold .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hold .frame { margin: 0; border: 1px solid var(--silver); outline: 1px solid rgba(207, 194, 202, .35); outline-offset: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, .6); }
+.hold .frame img { display: block; width: 100%; height: auto; }
+.hold p.t { margin-top: 16px; max-width: 38ch; font-size: 1.45rem; color: var(--silver); font-style: italic; }
+
+/* SMILE */
+.smile .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.smile .pola { --rot: 2deg; }
+.smile p.t { margin-top: 16px; max-width: 38ch; font-size: 1.45rem; color: var(--silver); font-style: italic; }
+
+/* WALL */
+.wall { background: var(--bg-2); text-align: center; }
+.wall .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .16; filter: grayscale(1) contrast(1.1); }
+.wall .wrap { display: grid; justify-items: center; gap: 20px; }
+.cats { width: min(230px, 60vw); background: var(--paper); padding: 8px; transform: rotate(-3deg); box-shadow: 0 14px 34px rgba(0, 0, 0, .6); }
+.cats img { display: block; width: 100%; height: auto; }
+.foot { font-size: clamp(3rem, 11vw, 7rem); line-height: 1; color: var(--lip); }
+.wall p.sm { color: var(--silver); max-width: 40ch; font-size: 1.4rem; font-style: italic; }
+.pad { position: relative; width: 100%; min-height: 340px; border: 1px solid var(--lip); outline: 1px solid rgba(212, 38, 75, .4); outline-offset: 7px; cursor: pointer; overflow: hidden; background: rgba(11, 5, 8, .6); touch-action: manipulation; display: grid; place-items: center; padding: 16px; color: var(--fg); font: inherit; user-select: none; -webkit-user-select: none; }
+.pad:hover { background: rgba(61, 10, 24, .45); }
+.pad:focus-visible { outline: 3px solid var(--silver); outline-offset: 4px; }
+.pad .hint { font-family: var(--font-script); font-size: clamp(2rem, 5vw, 3rem); color: var(--silver); pointer-events: none; position: relative; z-index: 2; line-height: 1.1; text-shadow: 0 2px 12px #000; }
+.pad .count { display: block; font-family: var(--font-body); font-size: 1.1rem; color: var(--muted); letter-spacing: .18em; text-transform: uppercase; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.pad .placed { position: absolute; width: 90px; transform: translate(-50%, -50%) rotate(var(--r)); filter: var(--kiss-filter); pointer-events: none; animation: stamp2 .35s cubic-bezier(.2, 1.4, .4, 1) both; z-index: 1; }
+@keyframes stamp2 { from { opacity: 0; transform: translate(-50%, -50%) rotate(var(--r)) scale(1.8); } to { opacity: .95; transform: translate(-50%, -50%) rotate(var(--r)) scale(1); } }
+.clear { background: none; border: 0; color: var(--muted); font: inherit; font-size: 1.1rem; letter-spacing: .18em; text-transform: uppercase; cursor: pointer; text-decoration: underline; text-underline-offset: 5px; padding: 6px 10px; }
+.clear:hover, .clear:focus-visible { color: var(--fg); }
+.tiny { font-size: 1.1rem; color: var(--muted); letter-spacing: .12em; }
+
+/* INTERACTIVE EXTRAS */
+.tools { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.tools .note { color: var(--muted); font-style: italic; font-size: 1.3rem; }
+.mini { background: none; border: 1px solid var(--silver); color: var(--silver); font: inherit; font-size: 1rem; letter-spacing: .2em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; cursor: pointer; transition: border-color .2s, color .2s, background .2s; }
+.mini:hover, .mini:focus-visible { border-color: var(--lip); color: #fff; background: rgba(212, 38, 75, .25); }
+.dock { position: fixed; left: 16px; bottom: 16px; z-index: 60; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+
+.dock .mini { display: flex; align-items: center; gap: 10px; background: rgba(11, 5, 8, .8); backdrop-filter: blur(6px); padding: 8px 18px 8px 10px; }
+.dock .mini img { width: 28px; filter: var(--kiss-filter); }
+#burst { position: fixed; inset: 0; z-index: 90; pointer-events: none; overflow: hidden; }
+#burst .pop { position: absolute; transform: translate(-50%, -50%) rotate(var(--r)); filter: var(--kiss-filter); animation: popup 1.4s ease-out forwards; }
+@keyframes popup { 0% { opacity: 0; scale: 1.8; } 15% { opacity: .95; scale: 1; } 100% { opacity: 0; translate: 0 -60px; } }
+#burst .fall { position: absolute; top: -140px; filter: var(--kiss-filter); rotate: var(--r); animation: fall linear forwards; }
+@keyframes fall { to { translate: 0 calc(100vh + 180px); } }
+.polas .pola { cursor: grab; user-select: none; -webkit-user-select: none; }
+.polas .pola img { -webkit-user-drag: none; cursor: inherit; }
+.pola.dragging { cursor: grabbing; transform: rotate(0deg) scale(1.05); box-shadow: 0 28px 60px rgba(0, 0, 0, .8); transition: none; }
+.pola.tidy { transition: left .5s ease, top .5s ease, transform .25s ease, box-shadow .25s ease; }
+@media (hover: none) { .drag-only { display: none; } }
+
+/* FLIP CARDS (photo front, handwritten note on the back) */
+.flippable { perspective: 1100px; cursor: pointer; }
+.flippable .inner { position: relative; flex: 1; display: flex; transform-style: preserve-3d; transition: transform .85s cubic-bezier(.3, 1.25, .4, 1); }
+.flippable.flipped .inner { transform: rotateY(180deg); }
+.flippable .face { backface-visibility: hidden; -webkit-backface-visibility: hidden; flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; }
+.flippable .back { position: absolute; inset: 0; transform: rotateY(180deg); justify-content: center; align-items: center; text-align: center; gap: 14px; padding: 22px 20px; color: var(--ink); background: repeating-linear-gradient(to bottom, transparent 0 31px, rgba(34, 9, 15, .12) 31px 32px), var(--paper); }
+.back .note { font-family: var(--font-script); font-size: clamp(1.45rem, 2.2vw, 1.8rem); line-height: 1.35; text-wrap: balance; }
+.back .flipback { font-size: .85rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(34, 9, 15, .55); }
+.pola.flippable { background: none; padding: 0; box-shadow: none; }
+.pola.flippable .face { background: var(--paper); padding: 10px 10px 8px; box-shadow: 0 16px 40px rgba(0, 0, 0, .6); }
+.pola.flippable .back { padding: 22px 20px; }
+.pola.flippable::before { z-index: 6; }
+.arch .back { border-radius: 999px 999px 8px 8px; border: 1px solid var(--silver); padding: 90px 40px 40px; }
+.reel .back, .frame .back { border: 1px solid var(--silver); }
+.zoombtn { position: absolute; top: 18px; right: 18px; z-index: 4; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .7); background: rgba(11, 5, 8, .65); color: #fff; font-size: 1.1rem; line-height: 1; cursor: zoom-in; opacity: 0; transition: opacity .2s; }
+.zoombtn { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flippable.flipped .zoombtn { display: none; }
+.arch .zoombtn { top: auto; bottom: 18px; right: 18px; }
+.flippable:hover .zoombtn, .zoombtn:focus-visible { opacity: 1; }
+@media (hover: none) { .zoombtn { opacity: .9; } }
+
+/* MUSIC WIDGET */
+.dock .player { padding: 6px 16px 6px 8px; }
+.vinyl { width: 34px; height: 34px; border-radius: 50%; flex: none; border: 1px solid #444; background: radial-gradient(circle, var(--lip) 0 20%, #111 21% 24%, transparent 25%), repeating-radial-gradient(circle, #1b1b1b 0 2px, #0a0a0a 2px 4px); }
+.player.playing .vinyl { animation: spin 3s linear infinite; }
+@keyframes spin { to { rotate: 360deg; } }
+.player .ptxt { text-transform: none; letter-spacing: .06em; font-size: 1.05rem; }
+
+/* CURSOR TRAIL */
+#burst .trail { position: absolute; transform: translate(-50%, -50%); font-size: 22px; line-height: 1; filter: drop-shadow(0 0 6px rgba(212, 38, 75, .6)); animation: trail 1.3s ease-out forwards; }
+#burst img.trail { width: 34px; filter: var(--kiss-filter); }
+@keyframes trail { 0% { opacity: 0; scale: .4; } 15% { opacity: 1; scale: 1; } 100% { opacity: 0; translate: var(--dx, 0px) -70px; scale: .8; } }
+
+/* BUTTONS, REASONS, SECRET LETTER */
+.bigbtn { font: inherit; font-size: 1.25rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #8d1530, var(--lip)); border: 0; padding: 16px 28px; border-radius: 999px; cursor: pointer; box-shadow: 0 10px 30px rgba(212, 38, 75, .35); }
+.bigbtn.sm { font-size: 1.05rem; padding: 12px 22px; margin-top: 18px; }
+.bigbtn:hover { filter: brightness(1.12); }
+.bigbtn:active { scale: .97; }
+.bigbtn:focus-visible { outline: 3px solid var(--silver); outline-offset: 4px; }
+.since { margin-top: 16px; font-family: var(--font-script); font-size: 1.8rem; color: var(--silver); font-variant-numeric: tabular-nums; }
+.reasons { background: radial-gradient(ellipse at 50% 60%, var(--wine) 0%, var(--bg) 70%); text-align: center; }
+.reasons .wrap { display: grid; justify-items: center; gap: 22px; }
+.reason-card { width: min(100%, 720px); min-height: 230px; padding: 40px 28px; border: 1px solid var(--silver); outline: 1px solid rgba(207, 194, 202, .35); outline-offset: 8px; background: rgba(11, 5, 8, .7); display: grid; place-items: center; align-content: center; gap: 14px; }
+.reason-card .num { font-size: 1.1rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.reason-card .txt { font-family: var(--font-body); font-style: italic; font-weight: 500; font-size: clamp(1.8rem, 4.2vw, 2.7rem); line-height: 1.25; color: var(--fg); text-wrap: balance; transition: opacity .3s, translate .3s; }
+.reason-card .txt.swap { opacity: 0; translate: 0 10px; }
+dialog.env { border: 0; padding: 0; background: transparent; width: min(92vw, 560px); max-height: 92svh; overflow: visible; margin: auto; color: var(--ink); }
+dialog.env::backdrop { background: rgba(8, 3, 6, .9); backdrop-filter: blur(6px); }
+.paper { position: relative; background: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(34, 9, 15, .1) 35px 36px), var(--paper); padding: 44px 34px 34px; box-shadow: 0 30px 90px #000; max-height: 90svh; overflow: auto; transform-origin: top center; }
+dialog.env[open] .paper { animation: unfold .9s cubic-bezier(.2, .9, .3, 1) both; }
+@keyframes unfold { from { transform: perspective(900px) rotateX(-80deg) scaleY(.3); opacity: 0; } to { transform: none; opacity: 1; } }
+.paper h2 { font-family: var(--font-script); font-weight: 400; font-size: 2.8rem; color: var(--lip); }
+.paper p { margin-top: 14px; font-size: 1.35rem; line-height: 1.6; color: var(--ink); opacity: 0; animation: lineIn .8s ease forwards; animation-delay: calc(.8s + var(--i, 0) * .55s); }
+.paper .sign { display: inline-block; margin-top: 18px; opacity: 0; animation: lineIn .8s ease forwards; animation-delay: calc(.8s + var(--i, 0) * .55s); }
+@keyframes lineIn { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+.env .x { position: absolute; top: 8px; right: 10px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(34, 9, 15, .5); background: transparent; color: var(--ink); font-size: 1.5rem; cursor: pointer; line-height: 1; }
+.env .x:hover, .env .x:focus-visible { border-color: var(--lip); color: var(--lip); }
+
+/* LIGHTBOX */
+.lb .nav { position: absolute; top: 50%; translate: 0 -50%; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--silver); background: rgba(11, 5, 8, .7); color: var(--fg); font-size: 1.8rem; cursor: pointer; line-height: 1; }
+.lb .nav.prev { left: 14px; }
+.lb .nav.next { right: 14px; }
+.lb .nav:hover, .lb .nav:focus-visible { border-color: var(--lip); color: var(--lip); }
+dialog.lb { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100svh; width: 100%; height: 100%; color: var(--fg); }
+dialog.lb::backdrop { background: rgba(8, 3, 6, .92); backdrop-filter: blur(6px); }
+dialog.lb[open] { display: grid; place-items: center; animation: fadein .25s ease; }
+@keyframes fadein { from { opacity: 0; } }
+.lb figure { margin: 0; display: grid; justify-items: center; gap: 12px; padding: 16px; max-width: 100%; }
+.lb img { max-width: min(94vw, 900px); max-height: 80svh; object-fit: contain; border: 1px solid var(--silver); outline: 1px solid rgba(207, 194, 202, .35); outline-offset: 7px; box-shadow: 0 24px 80px #000; }
+.lb figcaption { font-family: var(--font-script); font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--silver); text-align: center; }
+.lb .x { position: absolute; top: 14px; right: 16px; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--silver); background: rgba(11, 5, 8, .7); color: var(--fg); font-size: 1.6rem; cursor: pointer; line-height: 1; }
+.lb .x:hover, .lb .x:focus-visible { border-color: var(--lip); color: var(--lip); }
+
+@media (max-width: 820px) {
+  .hero .wrap, .letter .wrap, .smile .wrap, .hold .wrap, .eyes .wrap { grid-template-columns: 1fr; }
+  .hero .arch { order: -1; width: min(100%, 300px); }
+  .hold .frame { order: -1; }
+  .polas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 16px; }
+  .pola figcaption { font-size: 1.5rem; }
+  .cards { grid-template-columns: 1fr; }
+  .card.wide { grid-column: auto; }
+  .card { padding: 30px 22px 26px; }
+}
+@media (max-width: 480px) {
+  .words li:nth-child(even) { padding-left: 0; }
+  .polas { grid-template-columns: 1fr; gap: 26px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .stamp-in, .pad .placed, .arch, .seal, .scrollcue::after { animation: none; }
+  #burst { display: none; }
+  .reveal { opacity: 1; translate: none; transition: none; }
+  .pola { transition: none; }
+  
+}
+@keyframes pageFadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+
+</head><body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div id="burst" aria-hidden="true"></div>
+<div class="dock">
+  <button class="mini player" id="play" type="button" aria-pressed="false"><span class="vinyl" aria-hidden="true"></span><span class="ptxt" id="ptxt">Tap for our song 🎵</span></button>
+  <button class="mini" id="trailbtn" type="button" aria-pressed="true">cursor trail: on</button>
+  <button class="mini" id="rain" type="button"><img src="img/xoxo__-removebg-preview.png" alt="">kiss rain</button>
+  <a class="mini" href="index.html" style="text-decoration:none;">✉️ cover</a>
+</div>
+
+
+
+<section class="hero">
+  <img class="flw hero-big glow-halo" style="--fr:-4%;--fy:-8%;--fs:36vw;--frt:14deg;--fo:.95;--fd:.1s" src="img/flw_double.png" alt="" loading="lazy">
+  <img class="flw hero-big glow-gold" style="--fx:-6%;--fy:46%;--fs:32vw;--frt:-16deg;--fo:.92;--fd:.8s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-wine" style="--fr:32%;--fy:74%;--fs:24vw;--frt:18deg;--fo:.88;--fd:1.4s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="k stamp-in" style="--x:-5%;--y:-6%;--s:15vw;--r:-18deg;--d:.1s" src="img/xoxo__-removebg-preview.png" alt="">
+  <img class="k stamp-in" style="--x:58%;--y:-3%;--s:16vw;--r:12deg;--d:.35s;--o:.8" src="img/xoxo__-removebg-preview.png" alt="">
+  <img class="k stamp-in" style="--x:44%;--y:72%;--s:15vw;--r:-8deg;--d:.6s" src="img/xoxo__-removebg-preview.png" alt="">
+  <img class="k stamp-in" style="--x:86%;--y:58%;--s:14vw;--r:24deg;--d:.85s;--o:.85" src="img/xoxo__-removebg-preview.png" alt="">
+  <img class="k stamp-in" style="--x:-4%;--y:92%;--s:12vw;--r:10deg;--d:1.05s;--o:.75" src="img/xoxo__-removebg-preview.png" alt="">
+  <div class="wrap">
+
+
+    <div>
+      <p class="eyebrow">the girl who stole my heart</p>
+      <h1>You are<span>my whole damn world</span></h1>
+      <p class="lede">Black lace, ornate silver cross, wire-rim glasses, and your hand running through your hair... nobody pulls off this dark, dreamy, gorgeous look like you do.</p>
+      <p class="mwah">mwah mwahhh</p>
+      <div><button class="bigbtn sm" id="openLetter" type="button">✉️ Tap to open my secret letter</button></div>
+      <p class="since" id="since" hidden></p>
+      <span class="scrollcue">scroll</span>
+    </div>
+    <figure class="arch">
+      <img src="img/babi1.jpg" alt="Her running a hand through her hair in a black lace top with ornate silver cross necklace and glasses" data-zoom>
+    </figure>
+  </div>
+</section>
+
+<section class="words">
+  <img class="flw glow-wine" style="--fr:-2%;--fy:4%;--fs:26vw;--frt:-18deg;--fo:.92;--fd:.4s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="flw glow-white hero-big" style="--fx:-4%;--fy:42%;--fs:32vw;--frt:15deg;--fo:.92;--fd:1.1s" src="img/flw_silver.png" alt="" loading="lazy">
+  <img class="flw glow-halo" style="--fr:16%;--fy:72%;--fs:25vw;--frt:-12deg;--fo:.88;--fd:.7s" src="img/flw_halo.png" alt="" loading="lazy">
+  <img class="k" style="--x:78%;--y:8%;--s:17vw;--r:14deg" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:62%;--y:44%;--s:14vw;--r:-20deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:-3%;--y:70%;--s:16vw;--r:-10deg" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:84%;--y:82%;--s:13vw;--r:18deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+
+    <h2 class="reveal">she is</h2>
+    <ul>
+      <li class="reveal">Gorgeous.</li>
+      <li class="reveal">Beautiful.</li>
+      <li class="reveal">Cute.</li>
+      <li class="reveal">Glamorous.</li>
+      <li class="reveal">My Whole World. <small>literally my whole damn world</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="gallery">
+  <img class="flw glow-gold hero-big" style="--fr:-3%;--fy:-4%;--fs:34vw;--frt:12deg;--fo:.95;--fd:.2s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-halo" style="--fx:-5%;--fy:44%;--fs:28vw;--frt:-20deg;--fo:.9;--fd:1.3s" src="img/flw_double.png" alt="" loading="lazy">
+  <img class="flw glow-white" style="--fr:-2%;--fy:82%;--fs:26vw;--frt:16deg;--fo:.92;--fd:.6s" src="img/flw_silver.png" alt="" loading="lazy">
+  <img class="k" style="--x:-4%;--y:3%;--s:15vw;--r:20deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:88%;--y:30%;--s:14vw;--r:-14deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:-3%;--y:88%;--s:14vw;--r:8deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+
+    <p class="eyebrow reveal">just look at you</p>
+    <h2 class="sect-h reveal">Every angle is my favorite</h2>
+    <div class="tools reveal"><span class="note"><span class="drag-only">drag the photos around &middot; </span>tap one to flip it over (⤢ to see it bigger)</span><button class="mini drag-only" type="button" data-tidy>tidy up</button></div>
+    <div class="polas">
+      <figure class="pola reveal"><img src="img/babi2.jpg" alt="Her laughing with birthday candles glowing on cake" loading="lazy" decoding="async" data-zoom><figcaption>the smile that lights up my universe</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi3.jpg" alt="Black top and cargo pants mirror selfie with studded belt" loading="lazy" decoding="async" data-zoom><figcaption>serving looks, nobody does it like you</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi4.jpg" alt="Looking at a black and white art piece" loading="lazy" decoding="async" data-zoom><figcaption>the real masterpiece watching art</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi5.jpg" alt="Teal pattern top mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>my absolute prettiest girl</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi6.jpg" alt="Denim jacket, headphones, and sunglasses peace sign selfie" loading="lazy" decoding="async" data-zoom><figcaption>effortlessly cool & stunning</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi7.jpg" alt="Classical traditional dance performance pose" loading="lazy" decoding="async" data-zoom><figcaption>graceful, breathtaking & magical</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="scrapbook">
+  <img class="flw hero-big glow-halo" style="--fx:-4%;--fy:-2%;--fs:35vw;--frt:-12deg;--fo:.95;--fd:.3s" src="img/flw_double.png" alt="" loading="lazy">
+  <img class="flw glow-halo" style="--fr:-4%;--fy:26%;--fs:28vw;--frt:15deg;--fo:.9;--fd:1.2s" src="img/flw_halo.png" alt="" loading="lazy">
+  <img class="flw glow-wine" style="--fx:-3%;--fy:56%;--fs:26vw;--frt:-18deg;--fo:.9;--fd:.8s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="flw glow-gold" style="--fr:-3%;--fy:76%;--fs:28vw;--frt:20deg;--fo:.92;--fd:1.6s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-white" style="--fx:36%;--fy:93%;--fs:26vw;--frt:-8deg;--fo:.9;--fd:.5s" src="img/flw_silver.png" alt="" loading="lazy">
+  <img class="k" style="--x:92%;--y:4%;--s:14vw;--r:15deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:-2%;--y:50%;--s:15vw;--r:-12deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:88%;--y:92%;--s:14vw;--r:20deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+
+    <p class="eyebrow reveal">the babi collection</p>
+    <h2 class="sect-h reveal">Moments I treasure forever</h2>
+    <div class="tools reveal"><span class="note"><span class="drag-only">drag the photos around &middot; </span>tap one to flip it over (⤢ to see it bigger)</span><button class="mini drag-only" type="button" data-tidy>tidy up</button></div>
+    <div class="polas grid-4">
+      <figure class="pola reveal"><img src="img/babi12.jpg" alt="Mirror selfie in black crop tee, loose jeans, gothic ornate mirror frame" loading="lazy" decoding="async" data-zoom><figcaption>gothic mirror frame</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi13.jpg" alt="Golden hour silhouette with arm lifted running through hair" loading="lazy" decoding="async" data-zoom><figcaption>golden hour silhouette</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi14.jpg" alt="Brown ribbed crop top, light blue baggy jeans mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>brown crop top & baggy jeans</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi15.jpg" alt="Black and white mirror selfie in gothic frame, black graphic tee" loading="lazy" decoding="async" data-zoom><figcaption>black & white gothic</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi16.jpg" alt="Black scoop top, wire-rim glasses, hair up in bun mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>glasses, bun & studded belt</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi17.jpg" alt="Dark aesthetic mirror selfie from high angle" loading="lazy" decoding="async" data-zoom><figcaption>artistic b&w angle</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi18.jpg" alt="Arms out playful pose with cute Minecraft hearts and sticker filter" loading="lazy" decoding="async" data-zoom><figcaption>minecraft hearts & sparkles</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi19.jpg" alt="Brown sleeveless top, black maxi skirt, shoulder tote bag" loading="lazy" decoding="async" data-zoom><figcaption>black maxi skirt & tote</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi20.jpg" alt="Childhood playground smile in colorful play structure" loading="lazy" decoding="async" data-zoom><figcaption>playground sunshine</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi21.jpg" alt="Graphic print top mirror selfie with bear ears filter" loading="lazy" decoding="async" data-zoom><figcaption>graphic tee & bear ears</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi22.jpg" alt="Double mirror reflection in black tank and blue jeans" loading="lazy" decoding="async" data-zoom><figcaption>double reflection</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi23.jpg" alt="Silly selfie with police hat filter, mustache, and angry bird sticker" loading="lazy" decoding="async" data-zoom><figcaption>officer nunu & angry bird</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi24.jpg" alt="All black outfit full length mirror selfie in wardrobe" loading="lazy" decoding="async" data-zoom><figcaption>all black wardrobe mirror</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi25.jpg" alt="Sitting by glass window with reflections of city buildings" loading="lazy" decoding="async" data-zoom><figcaption>sunlit window reflections</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi26.jpg" alt="Two panels holding glowing magical crystal sphere with eye art" loading="lazy" decoding="async" data-zoom><figcaption>crystal orb sorcery</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi27.jpg" alt="Full length wooden mirror selfie wearing grey top and blue jeans" loading="lazy" decoding="async" data-zoom><figcaption>wooden frame reflection</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi28.jpg" alt="Close up holding glowing crystal sphere with silver rings and nose jewelry" loading="lazy" decoding="async" data-zoom><figcaption>crystal glow close-up</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi29.jpg" alt="Olive green top, wide trousers, hair in bun mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>olive green & bun</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi30.jpg" alt="Green t-shirt and relaxed trousers mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>chill day green tee</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi31.jpg" alt="Looking back over shoulder in dark off-shoulder top" loading="lazy" decoding="async" data-zoom><figcaption>look over shoulder</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi32.jpg" alt="Holding birthday cake under silver HAPPY BIRTHDAY balloons" loading="lazy" decoding="async" data-zoom><figcaption>happy 16th birthday</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi33.jpg" alt="Toddler nunu in striped red shirt standing by sofa" loading="lazy" decoding="async" data-zoom><figcaption>toddler nunu archives</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi34.jpg" alt="White oversized top, graphic baggy pants, red bandana street style" loading="lazy" decoding="async" data-zoom><figcaption>red bandana street style</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi35.jpg" alt="Black long sleeve crop top, sunglasses, and cross necklace" loading="lazy" decoding="async" data-zoom><figcaption>shades & silver cross</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi36.jpg" alt="Olive green top, wide trousers, hair in bun mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>cozy green fit</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi37.jpg" alt="Red printed floral dress, sweet smile, hand in hair, guitar in background" loading="lazy" decoding="async" data-zoom><figcaption>red dress & guitar</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi38.jpg" alt="Light blue flowy dress mirror selfie with hair down" loading="lazy" decoding="async" data-zoom><figcaption>blue dress fairy</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi39.jpg" alt="Side profile in tea shop browsing tea boxes on wooden display shelves" loading="lazy" decoding="async" data-zoom><figcaption>browsing the tea shelves</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi40.jpg" alt="Denim jacket over grey crop top with headphones taking mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>denim jacket & headphones</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi41.jpg" alt="Dim bedroom light close-up face with dark expressive eyes" loading="lazy" decoding="async" data-zoom><figcaption>midnight gaze</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi42.jpg" alt="Black tank top with mustache and hat filter double mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>mustache filter mirror</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi43.jpg" alt="Portrait with glasses, white collar shirt, star clip in hair on teal background" loading="lazy" decoding="async" data-zoom><figcaption>star clip & teal frame</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi44.jpg" alt="White collar top, glasses, hand resting on head with wavy hair" loading="lazy" decoding="async" data-zoom><figcaption>white collar & glasses</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi45.jpg" alt="Wire glasses, dark hair, cute finger on chin thinking pose" loading="lazy" decoding="async" data-zoom><figcaption>pondering thinker pose</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi46.jpg" alt="Lying down selfie with wire glasses, dark wavy hair and star clip" loading="lazy" decoding="async" data-zoom><figcaption>cozy lying down selfie</figcaption></figure>
+      <figure class="pola reveal"><img src="img/babi47.jpg" alt="Full body mirror selfie with cop hat filter and studded belt" loading="lazy" decoding="async" data-zoom><figcaption>studded belt & hat filter</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="adore">
+  <img class="flw glow-white hero-big" style="--fr:-4%;--fy:2%;--fs:32vw;--frt:18deg;--fo:.92;--fd:.5s" src="img/flw_silver.png" alt="" loading="lazy">
+  <img class="flw glow-halo hero-big" style="--fx:-5%;--fy:50%;--fs:32vw;--frt:-14deg;--fo:.92;--fd:1s" src="img/flw_halo.png" alt="" loading="lazy">
+  <img class="flw glow-wine" style="--fr:-2%;--fy:84%;--fs:25vw;--frt:16deg;--fo:.88;--fd:1.5s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="k" style="--x:90%;--y:1%;--s:14vw;--r:-16deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:-3%;--y:40%;--s:12vw;--r:22deg;--o:.7" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:88%;--y:90%;--s:15vw;--r:10deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+
+    <p class="eyebrow reveal">what I adore</p>
+    <h2 class="sect-h reveal">All the things you are</h2>
+    <p class="intro reveal">I could write forever, so here's the short version.</p>
+    <div class="cards">
+      <div class="card reveal"><span class="cross" aria-hidden="true">†</span>
+        <h3>That Black Lace &amp; Silver Cross Aesthetic</h3>
+        <p>That black lace top with the ornate silver cross necklace, your wire-rim glasses, and your hand running through your hair... it's literally my favorite look in the universe. You look so effortlessly dark, dreamy, and gorgeous without even trying.</p>
+      </div>
+      <div class="card reveal"><span class="cross" aria-hidden="true">†</span>
+        <h3>Your Signature Glamour</h3>
+        <p>Lace, silver cross, wire-rim glasses, baggy jeans with a studded belt, black tees, black bracelets. Whatever you put on, it looks like it was made for you. You have a unique style nobody else on earth could ever copy.</p>
+      </div>
+      <div class="card reveal"><span class="cross" aria-hidden="true">†</span>
+        <h3>That Unmatched Poise</h3>
+        <p>Whether you're casually running your hand through your hair in front of the mirror with your acoustic guitar behind you, or giving me that squinty, giant, no-chill smile... how are you so insanely gorgeous and adorable at the exact same time?</p>
+      </div>
+      <div class="card reveal"><span class="cross" aria-hidden="true">†</span>
+        <h3>You're my favorite person</h3>
+        <p>Good news, bad news, nothing news, you're the first person I want to tell. You make ordinary days feel like something I want to remember forever.</p>
+      </div>
+      <div class="card wide reveal"><span class="cross" aria-hidden="true">†</span>
+        <h3>You mean the world to me</h3>
+        <p>I mean this in the realest, deepest way, babyyy. You are literally my whole damn world. I love you in the loud mwah mwah way, and I love you in the quiet way where you're just my person. I'm so grateful it's you, and I want you to know it every single second of every single day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fog">
+  <img class="bg" src="img/fog.jpg" alt="A black cat and a white cat sitting side by side in a misty field of daisies" loading="lazy" decoding="async">
+  <div class="wrap">
+    <h2 class="reveal">A black cat and a white cat in the same quiet garden</h2>
+    <p class="reveal">Different, and exactly right together. That's us forever.</p>
+  </div>
+</section>
+
+<section class="eyes">
+  <img class="flw glow-gold hero-big" style="--fr:-3%;--fy:4%;--fs:32vw;--frt:-14deg;--fo:.95;--fd:.7s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-halo" style="--fx:-3%;--fy:66%;--fs:26vw;--frt:18deg;--fo:.88;--fd:1.2s" src="img/flw_double.png" alt="" loading="lazy">
+  <img class="k" style="--x:-3%;--y:4%;--s:14vw;--r:-12deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:86%;--y:76%;--s:15vw;--r:16deg;--o:.85" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+    <div class="reels-duo reveal">
+      <figure class="reel" style="--rot:-2deg;">
+        <img src="img/babi8.jpg" alt="Close-up of her deep expressive eyes looking into camera" loading="lazy" decoding="async" data-zoom>
+        <figcaption>those eyes, always yours</figcaption>
+      </figure>
+      <figure class="reel" style="--rot:2.5deg;">
+        <img src="img/boy_me1.jpg" alt="My eyes 4-strip reel gazing and winking at you" loading="lazy" decoding="async" data-zoom>
+        <figcaption>always got my eyes on u</figcaption>
+      </figure>
+    </div>
+    <div class="txt reveal">
+      <p class="eyebrow">every look begins &amp; ends with you</p>
+      <h2 class="sect-h">I always got my eyes on you</h2>
+      <p class="t">Left, right, up, down, winking, watching over you... no matter where I am or where these eyes go, they are locked on you, baby. You are the only girl in the entire universe I see. One look into those deep, gorgeous eyes of yours and my whole world stops.</p>
+      <figure class="pola mini-star reveal" style="width:min(100%, 250px); margin-top:16px; --rot:-1.5deg;">
+        <img src="img/boy_me2.jpg" alt="My eye with red star staring directly into the camera with you in mind" loading="lazy" decoding="async" data-zoom>
+        <figcaption>star on my eye, heart in yours</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="letter">
+  <img class="flw glow-halo hero-big" style="--fx:-2%;--fy:-4%;--fs:30vw;--frt:16deg;--fo:.92;--fd:.3s" src="img/flw_halo.png" alt="" loading="lazy">
+  <img class="flw glow-wine hero-big" style="--fr:-4%;--fy:64%;--fs:30vw;--frt:-20deg;--fo:.92;--fd:1.1s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="k" style="--x:90%;--y:-2%;--s:15vw;--r:-16deg" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:40%;--y:90%;--s:15vw;--r:6deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:-3%;--y:46%;--s:12vw;--r:-24deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+
+    <figure class="pola reveal">
+      <img src="img/babi9.jpg" alt="Close-up of her face with glasses low on her nose and a pixel star in her hair" loading="lazy" decoding="async" data-zoom>
+      <figcaption>those eyes though</figcaption>
+    </figure>
+    <div class="body reveal">
+      <p class="eyebrow">a little letter</p>
+      <h2 class="big">I would choose <em>you</em> every time. Over anyone.</h2>
+      <p>Any room, any day, any version of the world, it's you. No second thoughts. No hesitation. Just you, every single time, and I'll never get tired of saying it.</p>
+      <p>You're gorgeous, you're beautiful, you're cute and glamorous and somehow all of it at once. I look at you in that black lace and silver cross and my whole brain goes <strong>mwah</strong>.</p>
+      <p>I love you so much, baby. You are literally my whole damn world. I'm going to keep telling you until you're tired of hearing it. You won't be.</p>
+      <span class="sign">yours, always &amp; forever</span>
+    </div>
+  </div>
+</section>
+
+<section class="hold">
+  <img class="flw glow-wine hero-big" style="--fr:-3%;--fy:2%;--fs:30vw;--frt:14deg;--fo:.92;--fd:.6s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="flw glow-white" style="--fx:-3%;--fy:60%;--fs:26vw;--frt:-16deg;--fo:.88;--fd:1.3s" src="img/flw_silver.png" alt="" loading="lazy">
+  <img class="k" style="--x:48%;--y:-4%;--s:14vw;--r:10deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:90%;--y:86%;--s:14vw;--r:-14deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+
+    <div class="reveal">
+      <p class="eyebrow">how I picture us</p>
+      <h2 class="sect-h">Hold on to me</h2>
+      <p class="t">On my worst day and my best day, my favorite place is wherever you are. Come here, baby. Let me hold you for a while.</p>
+    </div>
+    <figure class="frame reveal"><img src="img/babi10.jpg" alt="Her cuddling with a cute black and white cat" loading="lazy" decoding="async" data-zoom></figure>
+  </div>
+</section>
+
+<section class="smile">
+  <img class="flw glow-gold hero-big" style="--fx:-3%;--fy:2%;--fs:32vw;--frt:-15deg;--fo:.95;--fd:.4s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-halo" style="--fr:-3%;--fy:60%;--fs:27vw;--frt:22deg;--fo:.88;--fd:1.4s" src="img/flw_double.png" alt="" loading="lazy">
+  <img class="k" style="--x:50%;--y:-4%;--s:14vw;--r:10deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:90%;--y:80%;--s:15vw;--r:-12deg" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+
+    <div class="reveal">
+      <p class="eyebrow">and that smile</p>
+      <h2 class="sect-h">Cutest smile in any decade</h2>
+      <p class="t">Squinty eyes, huge grin, zero chill. It melts me every single time.</p>
+    </div>
+    <figure class="pola reveal"><img src="img/babi11.jpg" alt="A little girl on a colorful playground, scrunching her eyes with a huge laughing smile" loading="lazy" decoding="async" data-zoom><figcaption>the smile that started it all</figcaption></figure>
+  </div>
+</section>
+
+<section class="kid-section">
+  <img class="flw glow-halo hero-big" style="--fx:-4%;--fy:-4%;--fs:34vw;--frt:-14deg;--fo:.95;--fd:.3s" src="img/flw_double.png" alt="" loading="lazy">
+  <img class="flw glow-gold hero-big" style="--fr:-3%;--fy:50%;--fs:30vw;--frt:16deg;--fo:.92;--fd:.9s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-wine" style="--fx:30%;--fy:88%;--fs:24vw;--frt:-10deg;--fo:.88;--fd:1.5s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="k" style="--x:90%;--y:4%;--s:14vw;--r:14deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:-2%;--y:60%;--s:15vw;--r:-16deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+    <p class="eyebrow reveal">from this little boy to you</p>
+    <h2 class="sect-h reveal">This kid never in a million years imagined...</h2>
+    <p class="lede reveal" style="max-width:48ch; margin-top:14px; font-size:1.4rem; color:var(--silver); font-style:italic;">
+      That he would grow up to get such a loving, caring, gorgeous, breathtaking girlfriend like you. You mean the absolute world to me, baby. And I swear to you with all my heart: I am never, ever letting go of you.
+    </p>
+    <div class="tools reveal"><span class="note"><span class="drag-only">drag the photos around &middot; </span>tap any photo to flip it over &amp; read the secret note</span></div>
+    <div class="polas grid-4">
+      <figure class="pola reveal"><img src="img/boy_kid1.jpg" alt="Little me running on grass in cheeky monkey shirt and bucket hat" loading="lazy" decoding="async" data-zoom><figcaption>cheeky monkey running into the future</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_kid2.jpg" alt="Baby me in blue tee with two tiny teeth smiling" loading="lazy" decoding="async" data-zoom><figcaption>two tiny teeth &amp; a heart waiting for u</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_kid3.jpg" alt="Toddler me laughing in the garden with curly hair" loading="lazy" decoding="async" data-zoom><figcaption>smiling big, but happier with you</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_kid4.jpg" alt="Barefoot toddler me in striped tee walking on lawn" loading="lazy" decoding="async" data-zoom><figcaption>barefoot adventurer finding his home</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_kid5.jpg" alt="Little me running on chalk squares with tiny sneakers" loading="lazy" decoding="async" data-zoom><figcaption>running straight toward my favorite person</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_kid6.jpg" alt="Holding hands walking in tiny shoes" loading="lazy" decoding="async" data-zoom><figcaption>only ever want to hold your hand now</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_kid7.jpg" alt="Close up in playpen with big brown eyes looking sideways" loading="lazy" decoding="async" data-zoom><figcaption>big eyes looking for my future angel</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="me-section">
+  <img class="flw glow-white hero-big" style="--fr:-3%;--fy:2%;--fs:30vw;--frt:14deg;--fo:.92;--fd:.4s" src="img/flw_silver.png" alt="" loading="lazy">
+  <img class="flw glow-wine hero-big" style="--fx:-4%;--fy:52%;--fs:32vw;--frt:-18deg;--fo:.9;--fd:1.1s" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="k" style="--x:4%;--y:10%;--s:14vw;--r:-12deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:92%;--y:84%;--s:15vw;--r:16deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+    <p class="eyebrow reveal">and now, look at me</p>
+    <h2 class="sect-h reveal">Completely, helplessly in love with you</h2>
+    <p class="lede reveal" style="max-width:48ch; margin-top:14px; font-size:1.4rem; color:var(--silver); font-style:italic;">
+      Rings, curly hair, studded belts, silly filters to make you laugh, and a heart that belongs 100% to you. You are my whole damn world, and I will always protect you and love you endlessly.
+    </p>
+    <div class="tools reveal"><span class="note"><span class="drag-only">drag the photos around &middot; </span>tap any photo to flip it over &amp; read the note</span></div>
+    <div class="polas grid-4">
+      <figure class="pola reveal"><img src="img/boy_me3.jpg" alt="Me with black nails, rings, curly hair and funny goggles filter" loading="lazy" decoding="async" data-zoom><figcaption>goggles &amp; black nails to make u laugh</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_me4.jpg" alt="Under the bed covers with glasses and messy curls" loading="lazy" decoding="async" data-zoom><figcaption>wishing u were under the blanket w me</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_me5.jpg" alt="Studded belts hanging in background mirror selfie" loading="lazy" decoding="async" data-zoom><figcaption>studded belt &amp; ready to fight for u</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_me6.jpg" alt="Dream shirt with question marks filter and curly hair" loading="lazy" decoding="async" data-zoom><figcaption>you're my literal dream come true</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_me7.jpg" alt="Eyes closed pouting face selfie" loading="lazy" decoding="async" data-zoom><figcaption>pouting until I get your next mwah</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_me8.jpg" alt="Wet curly hair, star earring, sticking tongue out" loading="lazy" decoding="async" data-zoom><figcaption>matching star earrings with you</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_me9.jpg" alt="B&amp;W full body mirror selfie in knit sweater and baggy jeans" loading="lazy" decoding="async" data-zoom><figcaption>the guy who loves you forever</figcaption></figure>
+      <figure class="pola reveal"><img src="img/boy_me10.jpg" alt="Lying on pillow looking into camera with glasses" loading="lazy" decoding="async" data-zoom><figcaption>so lucky to have you as my girl</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+
+<section class="reasons">
+  <img class="flw glow-gold hero-big" style="--fr:-3%;--fy:8%;--fs:30vw;--frt:18deg;--fo:.92;--fd:.5s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-white hero-big" style="--fx:-4%;--fy:55%;--fs:30vw;--frt:-18deg;--fo:.9;--fd:1.2s" src="img/flw_silver.png" alt="" loading="lazy">
+  <img class="k" style="--x:-3%;--y:8%;--s:14vw;--r:-14deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <img class="k" style="--x:90%;--y:70%;--s:14vw;--r:16deg;--o:.8" src="img/xoxo__-removebg-preview.png" alt="" loading="lazy">
+  <div class="wrap">
+
+    <p class="eyebrow reveal">why I love you today</p>
+    <h2 class="sect-h reveal">A new reason every time</h2>
+    <div class="reason-card reveal" aria-live="polite"><span class="num" id="rnum">reason #1 of &infin;</span><p class="txt" id="rtxt">Go on, tap the button.</p></div>
+    <button class="bigbtn reveal" id="reasonBtn" type="button">🔮 Tap for a new reason why I love you</button>
+  </div>
+</section>
+
+<section class="wall">
+  <img class="flw glow-halo hero-big" style="--fx:-3%;--fy:8%;--fs:34vw;--frt:-14deg;--fo:.95;--fd:.7s" src="img/flw_halo.png" alt="" loading="lazy">
+  <img class="flw glow-gold hero-big" style="--fr:-3%;--fy:12%;--fs:34vw;--frt:18deg;--fo:.95;--fd:1.3s" src="img/flw_gold.png" alt="" loading="lazy">
+  <img class="flw glow-wine" style="--fx:50%;--fy:88%;--fs:26vw;--frt:8deg;--fo:.9;--fd:.4s;translate:-50% 0" src="img/flw_wine.png" alt="" loading="lazy">
+  <img class="bg" src="img/blackkiss.jpg" alt="" loading="lazy" decoding="async">
+  <div class="wrap">
+
+
+    <div class="cats reveal"><img src="img/cats.jpg" alt="Two little cartoon creatures, one white and one black, holding hands under a pink heart" loading="lazy" decoding="async"></div>
+    <h2 class="foot reveal">mwah mwah mwah</h2>
+    <p class="sm reveal">I love you more than I can fit on one page. Tap the pad as many times as you like and leave a kiss for me.</p>
+    <button class="pad" id="pad" type="button" aria-label="Tap to leave a kiss">
+      <span class="hint">tap anywhere to leave a kiss<span class="count" id="count" aria-live="polite">0 kisses</span><span class="count" id="allcount"></span></span>
+    </button>
+    <button class="clear" id="clear" type="button">wipe the pad</button>
+    <p class="tiny">made with love, just for you. my whole world.</p>
+  </div>
+</section>
+
+<dialog class="env" id="env" aria-label="A secret letter">
+  <div class="paper">
+    <button class="x" id="envx" type="button" aria-label="Close letter">×</button>
+    <h2>Hi nunu</h2>
+    <p style="--i:0">hiii!! ok so i have a few things to say n im gonna say them all at once. first: u r so so so pretty. like pretty pretty pretty. gorgeous. beautiful. cute. glam. all at the same time?? how is that even legal</p>
+    <p style="--i:1">second: this is the first thing u see when u wake up, so good morning my love!! i hope ur smiling rn. if ur not, go look at ur pics n u will, cus ur literally the prettiest girl in the entire universe. mwah mwah mwah</p>
+    <p style="--i:2">third: i love u so much its kinda silly. i think about u soooo much n then i think about u some more. ur my whole world, my everything, my favorite person, my pretty girl, my everything again lol</p>
+    <p style="--i:3">ok thats all. ur cute. ur gorgeous. i love u loads n loads n loads. mwah mwah mwah mwah mwah mwah</p>
+    <span class="sign" style="--i:4">yours forever, mwah</span>
+  </div>
+</dialog>
+
+<dialog class="lb" id="lb" aria-label="Photo viewer">
+  <button class="x" id="lbx" type="button" aria-label="Close photo">×</button>
+  <button class="nav prev" id="lbprev" type="button" aria-label="Previous photo">‹</button>
+  <button class="nav next" id="lbnext" type="button" aria-label="Next photo">›</button>
+  <figure><img id="lbimg" src="" alt=""><figcaption id="lbcap"></figcaption></figure>
+</dialog>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var body = document.body;
+
+  /* ---- scroll reveal ---- */
+  var items = document.querySelectorAll('.reveal');
+  Array.prototype.forEach.call(items, function (el, i) {
+    var sib = Array.prototype.indexOf.call(el.parentNode.children, el);
+    el.style.setProperty('--rd', ((sib % 4) * 0.09).toFixed(2) + 's');
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    Array.prototype.forEach.call(items, function (el) { io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); });
+  }
+
+  /* ---- progress line ---- */
+  var bar = document.getElementById('progress');
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, window.scrollY / h) : 0) + ')';
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---- hide any image that fails to load (wrong path etc.) so there are no broken-icon boxes ---- */
+  Array.prototype.forEach.call(document.images, function (img) {
+    img.addEventListener('error', function () {
+      var f = img.closest('figure');
+      if (f && f.classList.contains('pola')) { f.style.display = 'none'; } else { img.style.visibility = 'hidden'; }
+    });
+  });
+
+  /* ---- lightbox ---- */
+  var lb = document.getElementById('lb');
+  var lbimg = document.getElementById('lbimg');
+  var lbcap = document.getElementById('lbcap');
+  var zoomList = Array.prototype.slice.call(document.querySelectorAll('[data-zoom]'));
+  var cur = 0, dragStamp = 0;
+  function openLb(img) {
+    cur = zoomList.indexOf(img);
+    var fig = img.closest('figure');
+    var cap = fig && fig.querySelector('figcaption');
+    lbimg.src = img.currentSrc || img.src;
+    lbimg.alt = img.alt;
+    lbcap.textContent = cap ? cap.textContent : '';
+    if (!lb.open) { if (lb.showModal) { lb.showModal(); } else { lb.setAttribute('open', ''); } }
+  }
+  function closeLb() { if (lb.close) { lb.close(); } else { lb.removeAttribute('open'); } }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-zoom]'), function (img) {
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', 'Flip to read the note on the back: ' + img.alt);
+    img.draggable = false;
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!toggleFlip(img.closest('.flippable'))) openLb(img); }
+    });
+  });
+  document.getElementById('lbx').addEventListener('click', closeLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.tagName === 'FIGURE') closeLb(); });
+
+  /* ---- kiss pad ---- */
+  var pad = document.getElementById('pad');
+  var countEl = document.getElementById('count');
+  var n = 0, lastX = -999, lastY = -999;
+  var KISSES = ['img/xoxo__-removebg-preview.png'];
+  function place(x, y) {
+    var img = document.createElement('img');
+    img.className = 'placed';
+    img.alt = '';
+    img.src = KISSES[Math.floor(Math.random() * KISSES.length)];
+    img.style.left = x + 'px';
+    img.style.top = y + 'px';
+    img.style.setProperty('--r', (Math.random() * 70 - 35).toFixed(0) + 'deg');
+    img.style.width = (70 + Math.random() * 50).toFixed(0) + 'px';
+    pad.appendChild(img);
+    n += 1;
+    countEl.textContent = n + (n === 1 ? ' kiss' : ' kisses');
+    bumpAll();
+    if (n % 50 === 0) rainKisses();
+    var placed = pad.querySelectorAll('.placed');
+    if (placed.length > 90) placed[0].remove();
+    if (navigator.vibrate) { try { navigator.vibrate(12); } catch (err) {} }
+  }
+  pad.addEventListener('click', function (e) {
+    var r = pad.getBoundingClientRect();
+    var keyboard = e.detail === 0;
+    var x = keyboard ? Math.random() * r.width : e.clientX - r.left;
+    var y = keyboard ? Math.random() * r.height : e.clientY - r.top;
+    lastX = x; lastY = y;
+    place(x, y);
+  });
+  /* mouse users can hold and drag to leave a trail of kisses */
+  pad.addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse' || e.buttons !== 1) return;
+    var r = pad.getBoundingClientRect();
+    var x = e.clientX - r.left, y = e.clientY - r.top;
+    if (Math.hypot(x - lastX, y - lastY) < 60) return;
+    lastX = x; lastY = y;
+    place(x, y);
+  });
+  document.getElementById('clear').addEventListener('click', function () {
+    Array.prototype.forEach.call(pad.querySelectorAll('.placed'), function (el) { el.remove(); });
+    n = 0;
+    countEl.textContent = '0 kisses';
+  });
+
+  /* ---- lightbox arrows, keys, swipe ---- */
+  function step(d) {
+    var tries = 0;
+    do { cur = (cur + d + zoomList.length) % zoomList.length; tries++; }
+    while (zoomList[cur].offsetParent === null && tries < zoomList.length);
+    openLb(zoomList[cur]);
+  }
+  document.getElementById('lbprev').addEventListener('click', function (e) { e.stopPropagation(); step(-1); });
+  document.getElementById('lbnext').addEventListener('click', function (e) { e.stopPropagation(); step(1); });
+  lb.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'ArrowLeft') step(-1);
+  });
+  var tx = null;
+  lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (tx === null) return;
+    var d = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(d) > 50) step(d < 0 ? 1 : -1);
+  }, { passive: true });
+
+  /* ---- drag the polaroids around (mouse); touch keeps normal scrolling + tap to zoom ---- */
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var zTop = 5;
+  if (canHover) {
+    Array.prototype.forEach.call(document.querySelectorAll('.polas .pola'), function (p) {
+      p.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'touch' || e.button !== 0) return;
+        e.preventDefault();
+        var sx = e.clientX, sy = e.clientY;
+        var bx = parseFloat(p.style.left) || 0, by = parseFloat(p.style.top) || 0;
+        var moved = false;
+        p.style.zIndex = ++zTop;
+        function mv(ev) {
+          var dx = ev.clientX - sx, dy = ev.clientY - sy;
+          if (!moved && Math.hypot(dx, dy) < 6) return;
+          moved = true;
+          p.classList.add('dragging');
+          p.style.left = (bx + dx) + 'px';
+          p.style.top = (by + dy) + 'px';
+        }
+        function up() {
+          window.removeEventListener('pointermove', mv);
+          window.removeEventListener('pointerup', up);
+          p.classList.remove('dragging');
+          if (moved) dragStamp = Date.now();
+        }
+        window.addEventListener('pointermove', mv);
+        window.addEventListener('pointerup', up);
+      });
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-tidy]'), function (b) {
+    b.addEventListener('click', function () {
+      Array.prototype.forEach.call(b.closest('section').querySelectorAll('.pola'), function (p) {
+        p.classList.add('tidy');
+        p.style.left = ''; p.style.top = '';
+        setTimeout(function () { p.classList.remove('tidy'); }, 600);
+      });
+    });
+  });
+
+  /* ---- click empty space anywhere to stamp a kiss; kiss rain button ---- */
+  var layer = document.getElementById('burst');
+  function randKiss() { return KISSES[Math.floor(Math.random() * KISSES.length)]; }
+  document.addEventListener('click', function (e) {
+    if (body.classList.contains('locked')) return;
+    if (e.target.closest('a,button,[data-zoom],.pola,.flippable,dialog,.pad,.reason-card')) return;
+    var im = document.createElement('img');
+    im.className = 'pop'; im.alt = ''; im.src = randKiss();
+    im.style.left = e.clientX + 'px';
+    im.style.top = e.clientY + 'px';
+    im.style.width = (60 + Math.random() * 40).toFixed(0) + 'px';
+    im.style.setProperty('--r', (Math.random() * 60 - 30).toFixed(0) + 'deg');
+    layer.appendChild(im);
+    setTimeout(function () { im.remove(); }, 1500);
+  });
+  var raining = false;
+  function rainKisses() {
+    if (raining || reduce) return;
+    raining = true;
+    var t = 0;
+    var iv = setInterval(function () {
+      var im = document.createElement('img');
+      var dur = 2.6 + Math.random() * 2;
+      im.className = 'fall'; im.alt = ''; im.src = randKiss();
+      im.style.left = (Math.random() * 96).toFixed(1) + 'vw';
+      im.style.width = (50 + Math.random() * 70).toFixed(0) + 'px';
+      im.style.animationDuration = dur.toFixed(2) + 's';
+      im.style.setProperty('--r', (Math.random() * 90 - 45).toFixed(0) + 'deg');
+      layer.appendChild(im);
+      setTimeout(function () { im.remove(); }, dur * 1000 + 100);
+      if (++t > 55) { clearInterval(iv); raining = false; }
+    }, 70);
+  }
+  document.getElementById('rain').addEventListener('click', rainKisses);
+
+  /* ---- hero photo follows the mouse a little ---- */
+  var heroEl = document.querySelector('.hero');
+  var archImg = document.querySelector('.arch img');
+  if (canHover && !reduce && heroEl && archImg) {
+    heroEl.addEventListener('pointermove', function (e) {
+      var r = heroEl.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      archImg.style.transform = 'perspective(900px) rotateY(' + (px * 14).toFixed(1) + 'deg) rotateX(' + (-py * 10).toFixed(1) + 'deg)';
+    });
+    heroEl.addEventListener('pointerleave', function () { archImg.style.transform = ''; });
+  }
+
+  /* =====================================================
+     SECRET NOTES ON THE BACK OF EVERY PHOTO (ALL 47 PHOTOS ACCURATELY MATCHED)
+     ===================================================== */
+  var NOTES = {
+    "babi1.jpg": "STOPPP the lace, the cross, ur hand in ur hair?? my heart literally left my body. gorgeous gorgeous gorgeous, pretty pretty pretty, mwah",
+    "babi2.jpg": "ur lil scrunchy birthday smile w the candles glowing omg omg omg. my heart just melted into a puddle, happiest birthday girl ever",
+    "babi3.jpg": "black top, studded belt, cargo pants, hello?? who gave u permission to look this good. cute cute cute, glam glam glam",
+    "babi4.jpg": "ur so focused on the art n im just here looking at u like hehe. ur the real masterpiece in the room, mwah",
+    "babi5.jpg": "teal teal tealll!! u look like a pretty lil flower. beautiful beautiful, i cant take my eyes off u",
+    "babi6.jpg": "headphones + sunglasses + denim jacket = my brain stops working. effortlessly cool and so pretty pretty pretty",
+    "babi7.jpg": "classical dancer queen!! u look like an actual goddess here. so graceful and breathtaking, im so proud of u baby",
+    "babi8.jpg": "looking straight into my soul with those big pretty eyes... wherever my eyes go, they always end up right back at u",
+    "babi9.jpg": "ur glasses slipping down n the lil star in ur hair?? pretty pretty pretty. i would choose u in every lifetime over anyone, no contest",
+    "babi10.jpg": "u cuddling the kitty!! my heart is going to explode from the cuteness. come here baby, let me hold u just like this forever",
+    "babi11.jpg": "scrunchy eyes since forever!! zero chill, biggest grin on the playground. the cutest smile in any decade, melts me every time",
+    "babi12.jpg": "the gothic floral mirror border and ur dark aesthetic!! an actual dark fairy queen, mwah mwah",
+    "babi13.jpg": "even in silhouette and shadows, ur outline is pure art. golden hour was made for u",
+    "babi14.jpg": "baggy jeans and the brown crop top fit!! u make the simplest casual clothes look like runway fashion",
+    "babi15.jpg": "black and white suits u so well. dark, dreamy, mysterious, and effortlessly gorgeous",
+    "babi16.jpg": "wire-rim glasses, hair up in a bun, and the studded belt... this look is undefeated. my smart, pretty girl",
+    "babi17.jpg": "love this artistic high angle!! looking up with those pretty eyes, i cant handle how cute u are",
+    "babi18.jpg": "arms out with all the lil minecraft hearts and pixel stickers!! cutie gamer girl, i wanna squish u so bad",
+    "babi19.jpg": "this long black skirt and tote bag outfit is so classy and elegant. look at my gorgeous lady",
+    "babi20.jpg": "the wide shot of lil baby nunu on the playground!! that happy little face has had my heart forever",
+    "babi21.jpg": "the cute lil bear ear filter with the graphic tee haha, why are u the most adorable person alive",
+    "babi22.jpg": "two reflections of u in the mirrors?? double the blessing, double the beauty, double the love",
+    "babi23.jpg": "officer nunu with the mustache and the angry bird hahaha, even when ur being completely silly ur still the cutest",
+    "babi24.jpg": "all black everything in front of the wardrobe mirror. dark aesthetic royalty, nobody rocks black like u",
+    "babi25.jpg": "sitting by the window with the city skyline reflections... natural sunlight hitting ur face looks so dreamy",
+    "babi26.jpg": "holding the glowing crystal orb like an ethereal sorceress!! magical, dramatic, stunning art",
+    "babi27.jpg": "framed in the wooden mirror like the work of art that u are. love ur casual vibe baby",
+    "babi28.jpg": "the close up with the crystal sphere and silver rings!! that glow doesn't even compare to how u light up my life",
+    "babi29.jpg": "olive green looks so gorgeous on u, and that messy top bun is my absolute favorite everyday look",
+    "babi30.jpg": "chill comfy green tee day!! effortless 10/10 even in the most casual fit at home",
+    "babi31.jpg": "that look over ur shoulder with the high bun... my heart stops for a second every time i see this",
+    "babi32.jpg": "holding ur birthday cake under the balloons!! seeing u happy on ur birthday is the best feeling in the world",
+    "babi33.jpg": "LOOK AT TINY NUNU!! standing so politely in her striped shirt and jeans, i wanna hug little baby u",
+    "babi34.jpg": "the red bandana look is iconic!! rockstar energy, nobody else could ever pull off this fit like u",
+    "babi35.jpg": "black crop top, dark sunglasses, and the cross necklace. you look like a superstar, so cool baby",
+    "babi36.jpg": "cozy, stylish, and looking so sweet. always love seeing your mirror selfies",
+    "babi37.jpg": "the red dress, your sweet shy smile, and your guitar behind u... you look like a dream come true",
+    "babi38.jpg": "u in this flowy light blue dress look like an actual angel. so soft, so delicate, so stunning",
+    "babi39.jpg": "my favorite candid!! u focused on looking at the tea boxes on the shelves, so cute when ur curious",
+    "babi40.jpg": "headphones around your neck and the denim jacket mirror selfie... my music-loving prettiest girl",
+    "babi41.jpg": "late night close up in the dark with those big deep eyes... melts my heart into a puddle every time",
+    "babi42.jpg": "double reflection with the mustache and police hat filter hahaha!! always making me smile and laugh",
+    "babi43.jpg": "star clip in your hair and wire glasses... the prettiest face in the entire world, hands down",
+    "babi44.jpg": "white collar shirt, glasses, and your hand in your hair... prettiest student, 100/100 on every test",
+    "babi45.jpg": "finger on your chin like you're thinking about something deep... thinking about me?? say yes hehe",
+    "babi46.jpg": "wish i was right there lying down next to u baby. cozy, soft, and the prettiest face ever",
+    "babi47.jpg": "studded belt queen with the hat filter!! love your style and your silly side so much",
+    "boy_me1.jpg": "always got my eyes on u baby. winking, staring, watching over u, loving u with every single blink. left, right, up, down... no matter where i look, it's always you. you're my whole world",
+    "boy_me2.jpg": "staring right into your soul with my star glasses!! star on my eye, heart in your hands. you have my whole heart forever",
+    "boy_me3.jpg": "black nails, rings, silly goggles filter just to make u smile hehe. you are my whole world baby, i love u so much",
+    "boy_me4.jpg": "cozy in bed with my glasses and messy curls... wishing u were right here next to me cuddling under the blankets",
+    "boy_me5.jpg": "studded belts in the back, mirror selfie... ready to fight the whole world for you. my gorgeous girl, always",
+    "boy_me6.jpg": "all those question marks but there is zero question about how much i love you. you're my literal dream come true",
+    "boy_me7.jpg": "eyes closed dreaming about u... pouting until i get my next mwah from you",
+    "boy_me8.jpg": "wet curls and star earring matching your star clips!! matching your vibe forever, cute cute cute",
+    "boy_me9.jpg": "knit sweater and baggy jeans... the boy who will love you, protect you, and cherish you until the end of time",
+    "boy_me10.jpg": "lying on my pillow staring into the camera thinking about how insanely lucky i am to have you as my girl. never letting go",
+    "boy_kid1.jpg": "if someone told this lil cheeky monkey that he'd grow up to get the prettiest, sweetest, most loving girl on earth as his girlfriend, he would've cried happy tears. i will never ever let go of u baby, u mean the whole world to me",
+    "boy_kid2.jpg": "look at this lil baby!! he had no clue what the world had in store for him, but god blessed me with you. loving u forever and always",
+    "boy_kid3.jpg": "this kid was so full of laughs, but the biggest, happiest smiles of my life only started when you walked into my world. never letting go of u",
+    "boy_kid4.jpg": "barefoot on the grass just vibing... now my favorite place on earth is right beside you holding you tight",
+    "boy_kid5.jpg": "running around on chalk squares... all roads were leading to you, my whole damn world",
+    "boy_kid6.jpg": "tiny shoes and holding hands... now my hand only fits in yours. ill hold on to you forever and never let go",
+    "boy_kid7.jpg": "big eyes looking around wonderingly... little did he know he was going to fall in love with the most gorgeous girl in the universe",
+
+};
+
+  function toggleFlip(el) {
+    if (!el || !el.classList.contains('flippable')) return false;
+    el.classList.toggle('flipped');
+    return true;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.pola, .arch, .reel, .frame'), function (el) {
+    var im = el.querySelector('img');
+    if (!im) return;
+    var note = NOTES[(im.getAttribute('src') || '').split('/').pop()];
+    if (!note) return;
+    var front = document.createElement('div'); front.className = 'face front';
+    while (el.firstChild) front.appendChild(el.firstChild);
+    var back = document.createElement('div'); back.className = 'face back';
+    var np = document.createElement('p'); np.className = 'note'; np.textContent = note;
+    var fb = document.createElement('span'); fb.className = 'flipback'; fb.textContent = 'tap to flip back';
+    back.appendChild(np); back.appendChild(fb);
+    var zb = document.createElement('button');
+    zb.type = 'button'; zb.className = 'zoombtn'; zb.textContent = '⤢';
+    zb.setAttribute('aria-label', 'View this photo bigger');
+    zb.addEventListener('click', function (e) { e.stopPropagation(); openLb(im); });
+    front.appendChild(zb);
+    var inner = document.createElement('div'); inner.className = 'inner';
+    inner.appendChild(front); inner.appendChild(back);
+    el.appendChild(inner);
+    el.classList.add('flippable');
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('.zoombtn')) return;
+      if (Date.now() - dragStamp < 300) return;
+      toggleFlip(el);
+    });
+  });
+
+  /* =====================================================
+     MUSIC WIDGET
+     Plays img/song.mp3 if you drop your own song there;
+     otherwise it plays a soft ambient pad made in the browser.
+     ===================================================== */
+  var playBtn = document.getElementById('play');
+  var ptxt = document.getElementById('ptxt');
+  var audio = new Audio();
+  audio.loop = true; audio.preload = 'none'; audio.src = 'img/song.mp3';
+  var wantPlay = false, mode = 'file';
+  var ac = null, master = null, synthOn = false, synthTimer = null;
+  var CHORDS = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]];
+  function mtof(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+  function ensureCtx() {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!ac) ac = new AC();
+    if (ac.state === 'suspended') ac.resume();
+  }
+  function startSynth() {
+    if (synthOn || !ac) return;
+    synthOn = true;
+    master = ac.createGain();
+    master.gain.setValueAtTime(0, ac.currentTime);
+    master.gain.linearRampToValueAtTime(0.5, ac.currentTime + 2);
+    var lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1100;
+    var dl = ac.createDelay(1.0); dl.delayTime.value = 0.42;
+    var fbk = ac.createGain(); fbk.gain.value = 0.38;
+    dl.connect(fbk); fbk.connect(dl);
+    master.connect(lp); lp.connect(ac.destination); lp.connect(dl); dl.connect(ac.destination);
+    var i = 0;
+    function chord() {
+      var t = ac.currentTime, c = CHORDS[i % CHORDS.length]; i++;
+      c.concat([c[0] - 12]).forEach(function (m, k) {
+        var o = ac.createOscillator(), g = ac.createGain();
+        o.type = k === 3 ? 'sine' : 'triangle';
+        o.frequency.value = mtof(m);
+        o.detune.value = Math.random() * 10 - 5;
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.12, t + 1.6);
+        g.gain.linearRampToValueAtTime(0, t + 5.6);
+        o.connect(g); g.connect(master); o.start(t); o.stop(t + 5.8);
+      });
+      for (var j = 0; j < 3; j++) {
+        var t2 = t + 1 + j * 1.4;
+        var b = ac.createOscillator(), bg = ac.createGain();
+        b.type = 'sine';
+        b.frequency.value = mtof(c[Math.floor(Math.random() * 3)] + 12);
+        bg.gain.setValueAtTime(0, t2);
+        bg.gain.linearRampToValueAtTime(0.08, t2 + 0.03);
+        bg.gain.linearRampToValueAtTime(0, t2 + 2.5);
+        b.connect(bg); bg.connect(master); b.start(t2); b.stop(t2 + 2.6);
+      }
+    }
+    chord();
+    synthTimer = setInterval(chord, 5000);
+  }
+  function stopSynth() {
+    if (!synthOn) return;
+    synthOn = false;
+    clearInterval(synthTimer);
+    var m = master;
+    if (m && ac) {
+      m.gain.cancelScheduledValues(ac.currentTime);
+      m.gain.setValueAtTime(m.gain.value, ac.currentTime);
+      m.gain.linearRampToValueAtTime(0, ac.currentTime + 1);
+      setTimeout(function () { try { m.disconnect(); } catch (err) {} }, 1200);
+    }
+  }
+  function setPlaying(on) {
+    wantPlay = on;
+    playBtn.classList.toggle('playing', on);
+    playBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    ptxt.textContent = on ? 'playing... tap to pause' : 'Tap for our song 🎵';
+  }
+  function toSynth() { mode = 'synth'; if (wantPlay) startSynth(); }
+  audio.addEventListener('error', toSynth);
+  playBtn.addEventListener('click', function () {
+    if (!wantPlay) {
+      setPlaying(true);
+      ensureCtx();
+      if (mode === 'synth') { startSynth(); }
+      else {
+        var pr = audio.play();
+        if (pr && pr.catch) pr.catch(toSynth);
+      }
+    } else {
+      setPlaying(false);
+      audio.pause();
+      stopSynth();
+    }
+  });
+
+  /* =====================================================
+     CURSOR TRAIL (hearts, roses, sparkles, kisses)
+     ===================================================== */
+  var trailOn = true, lastT = 0, tx0 = -999, ty0 = -999;
+  var GLYPHS = ['🖤', '🌹', '✨', '🖤', '🌹', '✨', 'kiss'];
+  function trailAt(x, y) {
+    if (!trailOn || reduce || body.classList.contains('locked') || document.querySelector('.pola.dragging')) return;
+    var now = Date.now();
+    if (now - lastT < 45 || Math.hypot(x - tx0, y - ty0) < 34) return;
+    lastT = now; tx0 = x; ty0 = y;
+    var g = GLYPHS[Math.floor(Math.random() * GLYPHS.length)], el;
+    if (g === 'kiss') { el = document.createElement('img'); el.src = randKiss(); el.alt = ''; }
+    else { el = document.createElement('span'); el.textContent = g; }
+    el.className = 'trail';
+    el.style.left = x + 'px'; el.style.top = y + 'px';
+    el.style.setProperty('--dx', (Math.random() * 60 - 30).toFixed(0) + 'px');
+    layer.appendChild(el);
+    setTimeout(function () { el.remove(); }, 1400);
+  }
+  document.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') trailAt(e.clientX, e.clientY); });
+  document.addEventListener('touchmove', function (e) { var t = e.touches[0]; if (t) trailAt(t.clientX, t.clientY); }, { passive: true });
+  var trailBtn = document.getElementById('trailbtn');
+  trailBtn.addEventListener('click', function () {
+    trailOn = !trailOn;
+    trailBtn.textContent = 'cursor trail: ' + (trailOn ? 'on' : 'off');
+    trailBtn.setAttribute('aria-pressed', trailOn ? 'true' : 'false');
+  });
+
+  /* =====================================================
+     SECRET LETTER
+     ===================================================== */
+  var env = document.getElementById('env');
+  function closeEnv() { if (env.close) { env.close(); } else { env.removeAttribute('open'); } }
+  document.getElementById('openLetter').addEventListener('click', function () {
+    if (env.showModal) { env.showModal(); } else { env.setAttribute('open', ''); }
+  });
+  document.getElementById('envx').addEventListener('click', closeEnv);
+  env.addEventListener('click', function (e) { if (e.target === env) closeEnv(); });
+
+  /* =====================================================
+     "WHY I LOVE YOU TODAY" GENERATOR
+     ===================================================== */
+  var REASONS = [
+    "cus ur smile makes ur eyes go all scrunchy n my heart goes boom boom boom",
+    "cus u in black lace n a silver cross is just too pretty, someone call the police",
+    "cus ur cargo pants n studded belt fit?? iconic. glamorous glamorous glam",
+    "cus ur my whole world n my whole universe n my whole everything. mwah",
+    "cus ur hand goes thru ur hair n my brain goes blank blank blank",
+    "cus ur cute cute cute n i cant stop saying it",
+    "cus u look so smart n pretty in ur glasses, double trouble",
+    "cus ur gorgeous n beautiful n pretty n cute n glam. thats 5 reasons in 1",
+    "cus u have the prettiest face in the whole wide world, thats facts",
+    "cus ur so soft n sweet n i just wanna hold u all day",
+    "cus my heart does silly lil flips whenever ur name pops up",
+    "cus ur laugh is the cutest sound on earth, i would collect them all",
+    "cus ur the cutest lil black cat n i wanna be ur white cat forever",
+    "cus ur my favorite human. top 1. no 2nd place",
+    "cus every pic of u is my fav pic. i cant pick. its a disaster",
+    "cus mwah mwah mwah mwah mwah. thats it thats the reason",
+    "cus ur birthday candle smile?? my heart melts n melts n melts",
+    "cus ur so pretty my brain just says wowwww n nothing else",
+    "cus ur gorgeous in the morning, gorgeous at night, gorgeous all the time",
+    "cus when u look at me w ur pretty eyes i forget how to talk lol",
+    "cus u make everything better just by existing. like hello??",
+    "cus black looks like it was made for u n only u",
+    "cus ur the best thing that ever happened to me, no cap",
+    "cus i love u so much it gets a lil silly, n i dont even care"
+  ];
+  var bag = [], shownCount = 0;
+  var rtxt = document.getElementById('rtxt'), rnum = document.getElementById('rnum');
+  var rbtn = document.getElementById('reasonBtn');
+  rbtn.addEventListener('click', function (e) {
+    if (!bag.length) { bag = REASONS.slice().sort(function () { return Math.random() - 0.5; }); }
+    var r = bag.pop();
+    shownCount += 1;
+    rtxt.classList.add('swap');
+    setTimeout(function () {
+      rtxt.textContent = r;
+      rnum.textContent = 'reason #' + shownCount + ' of ∞';
+      rtxt.classList.remove('swap');
+    }, reduce ? 0 : 260);
+    if (!reduce) {
+      var rc = rbtn.getBoundingClientRect();
+      var im = document.createElement('img');
+      im.className = 'pop'; im.alt = ''; im.src = randKiss();
+      im.style.left = (rc.left + Math.random() * rc.width) + 'px';
+      im.style.top = (rc.top + rc.height / 2) + 'px';
+      im.style.width = '70px';
+      im.style.setProperty('--r', (Math.random() * 60 - 30).toFixed(0) + 'deg');
+      layer.appendChild(im);
+      setTimeout(function () { im.remove(); }, 1500);
+    }
+  });
+
+  /* =====================================================
+     ALL-TIME KISS COUNTER (remembered on this device)
+     ===================================================== */
+  var allEl = document.getElementById('allcount');
+  var allKisses = 0;
+  try { allKisses = parseInt(localStorage.getItem('lovekisses.total'), 10) || 0; } catch (err) {}
+  function showAll() { allEl.textContent = allKisses > 0 ? 'all-time: ' + allKisses : ''; }
+  function bumpAll() {
+    allKisses += 1;
+    try { localStorage.setItem('lovekisses.total', String(allKisses)); } catch (err) {}
+    showAll();
+  }
+  showAll();
+
+  /* =====================================================
+     TOGETHER-SINCE COUNTER: put your date here, like '2025-02-14'
+     ===================================================== */
+  var SINCE = '';
+  var sinceEl = document.getElementById('since');
+  var sinceDate = SINCE ? new Date(SINCE + 'T00:00:00') : null;
+  if (sinceDate && !isNaN(sinceDate.getTime()) && sinceDate.getTime() < Date.now()) {
+    sinceEl.hidden = false;
+    var tickSince = function () {
+      var s = Math.floor((Date.now() - sinceDate.getTime()) / 1000);
+      var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+      sinceEl.textContent = 'loving you for ' + d + ' days, ' + h + ' hours, ' + m + ' minutes, ' + sec + ' seconds';
+    };
+    tickSince();
+    setInterval(tickSince, 1000);
+  }
+
+  /* =====================================================
+     SECRET: type "mwah" anywhere
+     ===================================================== */
+  var typed = '';
+  document.addEventListener('keydown', function (e) {
+    if (e.key.length !== 1 || e.target.closest('input,textarea')) return;
+    typed = (typed + e.key.toLowerCase()).slice(-4);
+    if (typed === 'mwah') { typed = ''; rainKisses(); }
+  });
+})();
+</script>
+
+</body></html>
